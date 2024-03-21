@@ -1,8 +1,9 @@
 @extends('welcome')
+@section('title', 'About - Springattorneys')
 @section('content')
 
 
-<div class="container pages">
+<div class="container">
     <div class="lipsum elements">
         <div class="text-center">
             <img src="{{ asset ('assets/image/new-logo-black.png') }}" alt="Board Advisory Icon" style="max-width: 20%; border-radius: 10%;">
@@ -10,9 +11,7 @@
         </div>
         <h1 class="text-center">About Us</h1>
         <hr>
-
-            
-                        <p class="text-justify">
+        <p class="text-justify">
                             Spring Attorneys is a full service highly accredited Tanzanian based East African Law firm providing topnotch legal services. Spring attorneys is your destination to esteemed legal services. We are dedicated to the legal health of individuals, organisations and enterprises; we attend and offer legal consult to private and institutional engagements.<br><br>
 
                                 We Work with local and international companies as well as international NGOs and Local NGOs in providing legal advisory services and governance advisory services that is suitable to the business environment. We focus on staying current and incorporating best practices in the field to guide our clients in making the best decisions for the interest of their organisations.<br><br>
@@ -78,6 +77,7 @@
 
     </div>
 </div>
+
 
 
 

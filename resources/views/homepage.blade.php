@@ -1,4 +1,5 @@
 @extends('welcome')
+
 @section('content')
     {{-- 
 @include('layouts.review') --}}

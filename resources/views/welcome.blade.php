@@ -4,7 +4,9 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head id="head">
-    <title>Home</title>
+    <title>
+        @yield('title', 'Home - Springattorneys')
+    </title>
 
     <meta name="description" content="Spring Attorneys" />
     <meta charset="UTF-8" />
@@ -205,7 +207,7 @@
                                 <a href="{{ url ( 'acceptable-use') }}" title="Acceptable Use">Acceptable Use</a>
                             </li>
                             <li>
-                                <a href="{{ url ( 'sitemap') }}" title="Sitemap">Sitemap</a>
+                                <a href="{{ url ( 'gallery') }}" title="gallery">gallery</a>
                             </li>
 
                         </ul>
@@ -239,6 +241,8 @@
                 }, 1000); // 1000 milliseconds (1 seconds)
             });
         </script>
+
+       
         {{-- <script type="text/javascript" src="{{ asset ('assets/js/jquery.fancybox-1.3.4.js') }}"></script>
 
         <script type="text/javascript" src="{{ asset ('assets/js/corec326.js?jjjkok') }}"></script>

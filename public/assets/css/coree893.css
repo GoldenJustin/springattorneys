@@ -16303,3 +16303,129 @@ section .panel-title span {
         margin: auto 30px 20px;
     }
 }
+
+@media screen and (min-width: 768px) {
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    left: 10%;
+    transform: translateX(-50%);
+    z-index: 15; /* Ensure indicators are above the carousel items */
+}
+
+.carousel-indicators button {
+    background-color: transparent;
+    border: none;
+    height: 10px; /* Adjust size as needed */
+    width: 10px; /* Adjust size as needed */
+    margin: 0 5px; /* Adjust spacing as needed */
+    border-radius: 50%;
+    opacity: 0.5; /* Adjust opacity as needed */
+}
+
+.carousel-indicators button.active {
+    background-color: #000; /* Adjust color as needed */
+    opacity: 1; /* Adjust opacity as needed */
+}
+
+.carousel-control-next {
+    right: 50%; /* Adjust distance from the right edge */
+}
+}
+
+
+
+.image-list {
+    padding: 10px;
+}
+
+.thumbnail2 {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.thumbnail2:hover {
+    opacity: 0.7;
+} 
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.image-overlay h5,
+.image-overlay p {
+    margin: 0;
+    padding: 0;
+}
+
+.img-thumbnail {
+    transition: transform 0.3s ease; /* Add smooth transition on hover */
+}
+
+.img-thumbnail:hover {
+    transform: scale(1.1); /* Scale up the image on hover */
+}
+
+.team-member-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.team-member-image img {
+    width: 100%;
+    height: auto;
+}
+
+.team-member-details {
+    padding: 20px;
+}
+
+.team-member-details h2 {
+    margin-top: 0;
+}
+
+.team-member-details p {
+    margin-bottom: 10px;
+}
+
+.team-member-description {
+    max-height: auto; /* Limit description height */
+    overflow: hidden;
+}
+
+/* Optional: Add hover effect */
+.team-member-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+
+
+

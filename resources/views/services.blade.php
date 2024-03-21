@@ -1,4 +1,5 @@
 @extends('welcome')
+@section('title', 'Services - Springattorneys')
 @section('content')
 <div class="container">
     <div class="text-center">
@@ -12,10 +13,6 @@
     <div style="font-size: 25px; text-align: center; line-height: 1.6;">
     <p>Welcome to Spring Attorneys – your premier destination for top-notch legal services. We specialize in providing tailored legal advisory and governance services to individuals, organizations, and enterprises in Tanzania and East Africa. Our approach is characterized by speed, practicality, and innovation. Discover excellence in every legal endeavor with Spring Attorneys.</p>
 </div>
-
-
-
-
 
     <br>
 
@@ -114,13 +111,7 @@
            
         </div>
 
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+      
     </div>
 
 </div>

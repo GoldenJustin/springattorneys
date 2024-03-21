@@ -1,4 +1,5 @@
 @extends('welcome')
+@section('title', 'Contact Us - Springattorneys')
 @section('content')
 
 <div class="container">

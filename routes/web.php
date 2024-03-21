@@ -46,6 +46,7 @@ Route::get('acceptable-use', function () {
     return view('acceptable-use');
 });
 
-Route::get('sitemap', function () {
-    return view('sitemap');
+
+Route::get('gallery', function () {
+    return view('gallery');
 });
