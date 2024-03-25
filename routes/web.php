@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,4 +50,17 @@ Route::get('acceptable-use', function () {
 
 Route::get('gallery', function () {
     return view('gallery');
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('auth/login', 'login')->name('login');
+    Route::post('auth/login', 'loginAction')->name('login.action');
+    // Route::get('auth/dashboard', 'dashboard')->name('dashboard');
+    Route::get('logout', 'logout')->middleware('auth')->name('logout');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('auth/dashboard');
+    })->name('dashboard');
 });
