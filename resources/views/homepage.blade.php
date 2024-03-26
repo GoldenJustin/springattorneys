@@ -5,135 +5,56 @@
 @include('layouts.review') --}}
 
 
-    <div id="p_lt_ctl01_sys_pnlUpdate">
-        <section class="block top-wrapper clearfix">
-            <div class="col-md-6 no-pad">
-                <div class="bg-img"><img
-                        id="p_lt_ctl01_pageplaceholder_p_lt_ctl00_GroupImages_GroupImages_zone_WebPartZone3_WebPartZone3_zone_editableimagezone1_ucEditableImage_imgImage"
-                        class="img-responsive" src="{{ asset('assets/image/janeth-presenting.png') }}" alt="" />
+<div id="p_lt_ctl01_sys_pnlUpdate">
+    <section class="block top-wrapper clearfix">
+        @foreach ($posts as $index => $post)
+        <div class="col-md-6 no-pad">
+            <div class="bg-img"><img class="img-responsive" src="{{ asset('assets/image/' . $imageFiles[$index % count($imageFiles)]) }}" alt="" />
 
-                    <div class="content-inner right">
-                        <div class="board short bg-blue">
-                            <div class="title">
-                                <h3>
-                                    <p>Business Litigation & &nbsp;Investigation Work</p>
-                                </h3>
-                            </div>
-                            <div class="detail">
-                                <p>
-                                <p>Spring Attorney has vast experience of litigating, arbitrating, investigating and
-                                    resolving corporate.</p>
-                                </p>
-                            </div>
-                            <div class="button"><a _blank="" class="btn btn-default">LITIGATION AND
-                                    <BR>ARBITRATION</a> </b>
-                            </div>
+                <div class="content-inner {{ $index % 2 == 0 ? 'right' : 'left' }}">
+                    <div class="board short {{ $index % 2 == 0 ? 'bg-blue' : 'bg-purple' }}">
+                        <div class="title">
+                            <h3>
+                                <p>{{ $post->title }}</p>
+                            </h3>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 no-pad">
-                <div class="bg-img"><img
-                        id="p_lt_ctl01_pageplaceholder_p_lt_ctl00_GroupImages_GroupImages_zone_WebPartZone4_WebPartZone4_zone_editableimagezone2_ucEditableImage_imgImage"
-                        class="img-responsive" src="{{ asset('assets/image/5.png') }}" alt="Starter Budle" />
-
-                    <div class="content-inner left">
-                        <div class="board short bg-purple">
-                            <div class="title">
-                                <h3>WE PROVIDE <br />CORPORATE <br />GOVERNANCE SERVICES</h3>
-                            </div>
-                            <div class="detail">
-                                <p>
-                                <p><br> Guide clients through corporate governance, ensuring compliance and ethical
-                                    practices
-                                </p>
-                                </p>
-                            </div>
-                            <div class="button"><a _blank="" class="btn btn-default">BOARD AND <br />GOVERNANCE <BR>
-                                    ADVISORY</a> <b></b>
-                            </div>
+                        <div class="detail">
+                            <p>{{ $post->detail }}</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 no-pad">
-                <div class="bg-img"><img
-                        id="p_lt_ctl01_pageplaceholder_p_lt_ctl00_GroupImages_GroupImages_zone_WebPartZone_WebPartZone_zone_editableimagezone3_ucEditableImage_imgImage"
-                        class="img-responsive" src="{{ asset('assets/image/janeth.png') }}"
-                        alt="" />
-
-                    <div class="content-inner right">
-                        <div class="board short bg-purple">
-                            <div class="title">
-                                <h3>EMPLOYMENT & <BR>BENEFITS MATTERS
-                                </h3>
-                            </div>
-                            <div class="detail">
-                                <p>
-                                <p>Prepare employment manuals, guide disciplinary &nbsp;hearings, and draft/review
-                                    contracts for clients</p>
-                                </p>
-                            </div>
-                            <div class="button"><a _blank="" class="btn btn-default"
-                                    >LABOUR LAW AND <br>
-                                    INDUSTRIAL<br> RELATIONS</a></div>
+                        <div class="button"><a _blank="" class="btn btn-default">{{ $post->button }}</a> </b>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 no-pad">
-                <div class="bg-img"><img
-                        id="p_lt_ctl01_pageplaceholder_p_lt_ctl00_GroupImages_GroupImages_zone_WebPartZone1_WebPartZone1_zone_editableimagezone_ucEditableImage_imgImage"
-                        class="img-responsive" src="{{ asset('assets/image/filter.png') }}" alt="" />
-
-                    <div class="content-inner left">
-                        <div class="content-inner left">
-                            <div class="board short bg-blue">
-                                <div class="title">
-                                    <h3>
-                                        <p>Legal Audit for Grants <br />
-                                            Associated Entities</p>
-                                    </h3>
-                                </div>
-                                <div class="detail">
-                                    <p>
-                                    <p>Legal audit ensures compliance with<br> laws, taxes, employment, and grants
-                                    </p>
-                                    </p>
-                                </div>
-                                <div class="button"><a _blank="" class="btn btn-default">LEGAL AND <BR>GOVERNANCE
-                                        AUDIT</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="title-heading clearfix">
-                        <h1>Spring Attorneys Offer</h1>
-                    </div>
-                    <div class="lipsum elements">
-                        <h3>
-                            <ul>
-                                <li>Fusion of Dynamic Expertise and Characters</li>
-                                <li>Destination to esteemed legal services</li>
-                            </ul>
-                        </h3>
-                        <p>We are duty bound to serve the community, in particularly the needy community members.
-                            We, at Spring Attorneys, are dedicated towards this cause, through our legal clinic
-                            section. Our legal clinic provides some legal assistance and legal education to the
-                            community members in different aspects. We train young people on career development and
-                            counseling on how to maximize their potential in the legal fraternity. </p>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="title-heading clearfix">
+                    <h1>Spring Attorneys Offer</h1>
+                </div>
+                <div class="lipsum elements">
+                    <h3>
+                        <ul>
+                            <li>Fusion of Dynamic Expertise and Characters</li>
+                            <li>Destination to esteemed legal services</li>
+                        </ul>
+                    </h3>
+                    <p>We are duty bound to serve the community, in particularly the needy community members.
+                        We, at Spring Attorneys, are dedicated towards this cause, through our legal clinic
+                        section. Our legal clinic provides some legal assistance and legal education to the
+                        community members in different aspects. We train young people on career development and
+                        counseling on how to maximize their potential in the legal fraternity. </p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+
     <div style="vertical-align: top;">
         <div id="dvChoosePlan">
             <div class="boardposition">

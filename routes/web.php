@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+// Route::get('/', function () {
+//     return view('homepage');
+// });
 
-Route::get('home', function () {
-    return view('homepage');
-});
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('dashboard');
+Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
+
+// Route::get('home', function () {
+//     return view('homepage');
+// });
 
 
 Route::get('about', function () {
@@ -63,4 +67,13 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return view('auth/dashboard');
     })->name('dashboard');
+
+    Route::controller(PostController::class)->prefix('post')->group(function (){
+        Route::get('', 'create')->name('create');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+    });
 });
+
+Route::delete('posts/{id}', 'PostController@destroy')->name('posts.destroy');
+
