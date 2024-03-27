@@ -72,13 +72,13 @@
                                             <div class="thumbnail " style="height:200px">
                                                 <div class="head" style="background-color:#4da86f">
                                                     <div class="head-inner">
-                                                        <p style="color:#FFFFFF !important;"><i
+                                                        <p style="color:#FFFFFF"><i
                                                                 class="fa fa-flag"></i>&nbsp;Mission
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="caption wysiwyg">
-                                                    <span class="price txt-purple">Ensure client’s sustainable
+                                                    <span class="price txt-black">Ensure client’s sustainable
                                                         undertakings through unrivaled legal services.</span>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="caption wysiwyg">
-                                                    <span class="price txt-purple">Provide swift access to high
+                                                    <span class="price txt-black">Provide swift access to high
                                                         quality cost effective legal services across the
                                                         globe.</span>
                                                 </div>

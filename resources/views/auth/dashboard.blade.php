@@ -12,117 +12,55 @@
                     <li class="breadcrumb-item active">This page allows you to upload your contents and Image Gallery</li>
                 </ol>
                 <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Total Home Bars</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Total Images</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Failed Images</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Danger Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                 
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        DataTable Example
+                        Posts Table
                     </div>
                     <div class="card-body">
-                        <table id="datatablesSimple">
+                        <table id="postsTable" class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>S/N</th>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Description</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
+                                @foreach($posts as $post)
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{{ $post->detail }}</td>
+                                    <td>{{ $post->button }}</td>
+                                    <td>{{ $post->created_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ $post->updated_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i> <!-- Font Awesome Edit Icon -->
+                                        </a>
+                                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fas fa-trash"></i> <!-- Font Awesome Trash Icon -->
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
-                                
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Cedric Kelly</td>
-                                    <td>Senior Javascript Developer</td>
-                                    <td>Edinburgh</td>
-                                    <td>22</td>
-                                    <td>2012/03/29</td>
-                                    <td>$433,060</td>
-                                </tr>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>33</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                </tr>
-                                <tr>
-                                    <td>Brielle Williamson</td>
-                                    <td>Integration Specialist</td>
-                                    <td>New York</td>
-                                    <td>61</td>
-                                    <td>2012/12/02</td>
-                                    <td>$372,000</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                
             </div>
         </main>
         @include('auth/footer')

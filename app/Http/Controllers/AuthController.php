@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Import Auth Facade
 use Illuminate\Support\Facades\Validator; // Correct Validator Namespace
@@ -11,7 +11,8 @@ class AuthController extends Controller
 {
     public function dashboard()
     {
-        return view('auth/dashboard');
+        $posts = Post::orderBy('created_at', 'asc')->get();
+        return view('auth.dashboard', compact('posts'));
     }
 
     public function login()

@@ -50,30 +50,26 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('auth.create', compact('post'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    
+    public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-      public function destroy($id)
-    {
-        // Find the post by its ID
         $post = Post::findOrFail($id);
+        $post->update($request->all());
+    
+        return redirect()->route('dashboard')->with('success', 'Post updated successfully');
         
-        // Delete the post
-        $post->delete();
-
-        return redirect()->back()->with('success', 'Post deleted successfully');
     }
+    
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('dashboard')->with('success', 'Post deleted successfully');
+    }
+    
 }

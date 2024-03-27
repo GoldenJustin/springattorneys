@@ -67,22 +67,22 @@ function showHideForgotPassword() {
     });
 }
 
-function initMenuProfile() {    
-    var onClickMenuProfile = false;    
+function initMenuProfile() {
+    var onClickMenuProfile = false;
     $(document).ready(function () {
         $("#menuProfile").hide();
         $("#menuProfileName").click(function () {
             showHideMenuProfile();
         });
         /*$("#menuProfileName").blur(function(){
-			showHideMenuProfile();
-		});*/
+            showHideMenuProfile();
+        });*/
     });
 
     function showHideMenuProfile() {
         if (onClickMenuProfile == false) {
             $("#menuProfile").show();
-            onClickMenuProfile = true;            
+            onClickMenuProfile = true;
         } else {
             $("#menuProfile").hide();
             onClickMenuProfile = false;
@@ -92,7 +92,7 @@ function initMenuProfile() {
 
 function visibleMenuByDefault() {
     var url = window.location.pathname.toLowerCase();
-    if (url.indexOf('/en-au/dashboard') != -1 || url.indexOf('/en-gb/dashboard') != -1 || url.indexOf('/dashboard') != -1) {        
+    if (url.indexOf('/en-au/dashboard') != -1 || url.indexOf('/en-gb/dashboard') != -1 || url.indexOf('/dashboard') != -1) {
         $('li#globalnavmenu').addClass("dropdown open");
         //$("#menuProfile").removeClass();
         //$("#menuProfile").addClass("dropdown-menu nav-displaymenu");
@@ -101,7 +101,7 @@ function visibleMenuByDefault() {
             "click": function () { this.closable = true; },
             "hide.bs.dropdown": function () {
                 if (typeof this.closable === "undefined") { return false; }
-                else { return this.closable; }                
+                else { return this.closable; }
             }
         });
     }
@@ -394,9 +394,9 @@ function footerBottom() {
                 $footer.css({
                     position: "absolute"
                 }).stop().
-                     animate({
-                         top: footerTop
-                     }, 0);
+                    animate({
+                        top: footerTop
+                    }, 0);
             } else {
                 $footer.css({
                     position: "static"
@@ -502,241 +502,10 @@ function searchAutoFocus() {
     }
 }
 
-function addIntoShoppingCart(prodcutDetails, forceAddEvent, forceAddMembership) {
-    forceAddEvent = forceAddEvent || false;
-    forceAddMembership = forceAddMembership || false;
-    addIntoShoppingCartNew(prodcutDetails, forceAddEvent, forceAddMembership);
-    //productDetailsInput = prodcutDetails;
-    //if (isMobile.any() && checkWidthHeight()) {
-    //    addIntoShoppingCartNew(prodcutDetails);
-    //    return;
-    //}
-    //$('#myShoppingModal').modal('show');
-    //$('#shoppingCartLoader').show();
-    //var parentNode = document.getElementById("dynamicCartItems");
-    //var productInfo = prodcutDetails.split(";");
 
-    //if (productInfo.length === 5 || productInfo.length > 5) {
-    //    var skuId = productInfo[0];
-    //    var nodeId = productInfo[1];
-    //    var type = productInfo[2];
-    //    var membershipType = productInfo[3];
-    //    var memberShipGuid = productInfo[4];
-    //    var callingPath = window.location.pathname;
-        
-    //    $.ajax({
-    //        url: "/CMSPages/WoB/ShoppingCartService.asmx/AddProductIntoShoppingCart",
-    //        data: JSON.stringify({ "skuId": skuId, "nodeId": nodeId, "productType": type, "membershipType": membershipType, "memberShipGuid": memberShipGuid, "callingPath": callingPath, "forceEventAdd": forceAddEvent, "forceAddMembership": forceAddMembership }),
-    //        dataType: "json",
-    //        type: "POST",
-    //        contentType: "application/json; charset=utf-8",
-    //        success: function (data) {
-    //            if (data) {
-    //                var result = data.d;
-    //                var disableCheckoutButton = false;
-    //                if (result !== null && result.ShoppingCartCategoryInfo !== null) {
-    //                    if (result.IsNonWobProduct) {
-    //                        window.location.href = result.NonWobProductExternalUrl;
-    //                    }
-    //                    if (result.ShoppingCartCategoryInfo.length > 0) {
-
-    //                        var addtoCartCategoryText = "What is in the cart: ";
-    //                        for (var i = 0; i < result.ShoppingCartCategoryInfo.length; i++) {
-    //                            addtoCartCategoryText += result.ShoppingCartCategoryInfo[i].ShoppingCartCategoryCount;
-    //                            addtoCartCategoryText += " ";
-    //                            addtoCartCategoryText += result.ShoppingCartCategoryInfo[i].ShoppingCartCategoryName;
-    //                            addtoCartCategoryText += " ";
-    //                        }
-    //                        if (result.IsCoTermMemberShip === true) {
-    //                            addtoCartCategoryText = "Subscribe For*";
-    //                        }
-    //                        if (addtoCartCategoryText !== "") {
-    //                            $("#addtocartgroupinfo").text(addtoCartCategoryText);
-    //                        }
-                            
-    //                        $("#dynamicCartItems").empty();
-    //                        parentNode.innerHTML = "";
-    //                        if (result.CartItems.length > 0 && result.Errors === null && result.IsCoTermMemberShip === false) {
-    //                            $("#ShoppingCartCountDesk").text(result.CartItems.length);
-    //                            $("#cartFooterDesk").show();
-    //                            for (var j = 0; j < result.CartItems.length; j++) {
-
-    //                                var resultItem = result.CartItems[j];
-    //                                var childDiv = document.createElement("div");
-    //                                var itemId = 'item_' + result.CartItems[j].SkuId + '';
-    //                                var strHTML = "";
-    //                                childDiv.id = itemId;
-    //                                childDiv.className = "card-item-details";
-    //                                strHTML += '<p class="icon icon-close" title="Delete Item">';
-    //                                strHTML += '<a href = "#" onclick ="RemoveShoppingCartItems(' + resultItem.SkuId + ');return false;">';
-    //                                strHTML += '<i class="fa fa-times" aria - hidden="true">';
-    //                                strHTML += '</i></a></p> ';
-    //                                strHTML += '<div class="item-name"> <p> ' + resultItem.SkuName;
-    //                                strHTML += '</p> <small>' + resultItem.Description + '</small>';
-    //                                if (result.CartItems[j].MembershipErrorWarning !== "") {
-    //                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';          
-    //                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > ' + result.CartItems[j].MembershipErrorWarning + '</label></p></div>';
-    //                                }
-    //                                else if (result.CartItems[j].EventErrorWarning !== "") {
-    //                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">'; 
-    //                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > ' + result.CartItems[j].EventErrorWarning;
-    //                                    strHTML += '<a href="/services/upgrade">Click here</a> to upgrade</label></p></div>';
-    //                                }
-    //                                else if (result.CartItems[j].ProductErrorWarning) {
-    //                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';
-    //                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > ' + result.CartItems[j].ProductErrorWarning;
-    //                                    strHTML += '<a href="/services/upgrade">Click here</a> to upgrade</label></p></div>';
-    //                                }
-    //                                else { strHTML += '</div>'; }
-    //                                strHTML += '<div class="item-rate"><p>' + result.CurrentCurrency + '' + result.CartItems[j].ProductUnitPrice + '</p></div>';
-    //                                childDiv.innerHTML = strHTML;
-    //                                parentNode.appendChild(childDiv);
-    //                                if (result.CartItems[j].MembershipErrorWarning !== "" || result.CartItems[j].EventErrorWarning !== "" || result.CartItems[j].ProductErrorWarning) {
-    //                                    disableCheckoutButton = true;
-    //                                }
-    //                            }
-    //                        }
-    //                        checkoutpagepath = result.CheckoutPagePath;
-    //                        $("#cartAreadyRegisterDiv").hide();  
-    //                    }
-    //                    else {
-    //                        parentNode.innerHTML = "<p>Shopping cart is empty</p>";
-    //                        $("#addtocartgroupinfo").text("What is in the cart: 0");
-    //                        $("#ShoppingCartCountDesk").text("0");
-    //                    }
-    //                    if (result.Errors !== null && result.Errors.length > 0) {
-    //                        var innerError = "";
-    //                        for (var shpError = 0; shpError < result.Errors.length; shpError++) {
-    //                            innerError += '<p><label class="shoppingcart-popup-membership-error-outline-label"><span class="fa fa-warning" style="margin-right:5px;"></span>' + result.Errors[shpError] + '</label></p>';
-    //                        }
-                            
-    //                        var errorDivDesktop = document.getElementById("desktopAlreadyRegisteredErrorMsg");
-    //                        errorDivDesktop.innerHTML = innerError;
-    //                        $("#desktopAlreadyRegisteredErrorMsg").show();
-    //                        $("#addtocartgroupinfo").text("Error Details:");
-    //                        $("#cartFooterDesk").hide();
-    //                        parentNode.innerHTML = "";
-    //                    }
-    //                    else {
-    //                        $("#desktopAlreadyRegisteredErrorMsg").hide();
-    //                    }
-    //                    if (result.AllowEvents) {
-    //                        $("#cartAreadyRegisterDiv").show();                            
-    //                    }
-    //                    else {
-    //                        $("#cartAreadyRegisterDiv").hide();                            
-    //                        disableForceEvent();
-    //                    }
-    //                    if (result.Errors !== null && result.Errors.length > 0) {
-    //                        if (result.UpgradeMemberShip) {
-    //                            $("#cartSubscriptionUpgrade").show();
-    //                        }
-    //                        else {
-    //                            $("#cartSubscriptionUpgrade").hide();
-    //                        }
-    //                    }
-    //                    else{
-    //                        $("#cartSubscriptionUpgrade").hide();
-    //                    }
-    //                    if (result.ShoppingCartCategoryInfo !== null && result.ShoppingCartCategoryInfo.length > 0 && result.IsCoTermMemberShip) {
-    //                        $("#cartFooterDesk").hide();
-    //                        $("#cartSelectSubscribeForDiv").show();
-    //                        for (var subVal = 0; subVal < result.CartItems.length; subVal++){
-    //                            if (result.CartItems[subVal].ShoppingCartCotermItemsRadio !== null) {
-    //                                var radioList = result.CartItems[subVal].ShoppingCartCotermItemsRadio;
-    //                                if (radioList.length > 0) {
-    //                                    var radioString = "<table style='width:100%;'>";
-    //                                    for (var radioCount = 0; radioCount < radioList.length; radioCount++) {
-    //                                        radioString += "<tr><td>";
-    //                                        radioString += "<input type='radio' id='cartSubscribeFor" + radioCount+"' name='cartMembershipType' value='" + radioList[radioCount].MembershipValueText + "' " + radioList[radioCount].DefaultSelected + "/>";
-    //                                        radioString += "<label class='shoppingCart-popup-subscribefor-label' for='cartSubscribeFor" + radioCount + "'>" + radioList[radioCount].MembershipDisplayText + "</label>";
-    //                                        radioString += "</td><td>";
-    //                                        radioString += "<label>"+ radioList[radioCount].CurrencySymbol+radioList[radioCount].Price + "</label></td></tr>";
-    //                                    }
-    //                                    radioString += "</table>";
-    //                                    parentNode.innerHTML = radioString;
-    //                                }
-    //                            }
-    //                        }                            
-    //                    }
-    //                    else {
-    //                        $("#cartSelectSubscribeForDiv").hide();
-    //                    }
-    //                }
-    //                else {
-    //                    parentNode.innerHTML = "<p>Shopping cart is empty</p>";
-    //                    $("#addtocartgroupinfo").text("What is in the cart: 0");
-    //                    $("#ShoppingCartCountDesk").text("0");
-    //                }
-    //                if (result !== null) {
-    //                    currentCulture = result.CurrentCulture;
-    //                }
-    //                if (disableCheckoutButton) {
-    //                    $("#dynamicPopupContinueShoppingCart").prop('disabled', true);
-    //                    $("#dynamicPoputCheckout").prop('disabled', true);
-    //                }
-    //                else {
-    //                    $("#dynamicPopupContinueShoppingCart").prop('disabled', false);
-    //                    $("#dynamicPoputCheckout").prop('disabled', false);
-    //                }
-    //            }
-    //        },
-    //        error: function (xmlHttpRequest, textStatus, errorThrown) {
-    //            console.log(textStatus);
-    //            $('#shoppingCartLoader').hide();
-    //        },
-    //        complete: function () {
-    //            $('#shoppingCartLoader').hide();
-    //        }
-    //    });
-    //}
-}
-function addIntoShoppingCartNew(prodcutDetails, forceAddEvent, forceAddMembership) {
-
-    forceAddEvent = forceAddEvent || false;
-    forceAddMembership = forceAddMembership || false;
-    var productInfo = prodcutDetails.split(";");
-    if (productInfo.length === 5 || productInfo.length > 5) {
-        var skuId = productInfo[0];
-        var nodeId = productInfo[1];
-        var type = productInfo[2];
-        var membershipType = productInfo[3];
-        var memberShipGuid = productInfo[4];
-        var callingPath = window.location.pathname;
-        $.ajax({
-            url: "/CMSPages/WoB/ShoppingCartService.asmx/AddProductIntoShoppingCart",
-            data: JSON.stringify({ "skuId": skuId, "nodeId": nodeId, "productType": type, "membershipType": membershipType, "memberShipGuid": memberShipGuid, "callingPath": callingPath, "forceEventAdd": forceAddEvent, "forceAddMembership": forceAddMembership }),
-            dataType: "json",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.d.IsNonWobProduct) {
-                    window.location.href = data.d.NonWobProductExternalUrl;
-                    return;
-                }
-                var redirectBackUrl = window.location.pathname;
-                var hrefLink = "/" + data.d.CurrentCulture + "/shop/addtocart?addtocart=" + redirectBackUrl;
-
-                if ($.urlParam('returnurl') != null) {
-                    if ($.urlParam('inputdata') != null) {
-                        hrefLink = "/" + data.d.CurrentCulture + "/shop/addtocart?redirectBackUrl=" + redirectBackUrl + "&returnurl=" + $.urlParam('returnurl') + '&inputdata=' + $.urlParam('inputdata');
-                        //hrefLink = checkoutpagepath + "?returnurl=" + urlParams.get('returnurl') + '&inputdata=' + urlParams.get('inputdata');
-                    }
-                    else {
-                        hrefLink = "/" + data.d.CurrentCulture + "/shop/addtocart?redirectBackUrl=" + redirectBackUrl + "&returnurl=" + $.urlParam('returnurl') + '&inputdata=';
-                    }
-                }
-                window.location.href = hrefLink;
-            },
-            error: function (xmlHttpRequest, textStatus, errorThrown) {
-                console.log(textStatus);
-            }
-        });
-    }
-}
 $("#dynamicPoputCheckout").click(function (e) {
     e.preventDefault();
-    
+
     if ($.urlParam('returnurl')) {
         if ($.urlParam('inputdata')) {
             window.location.href = checkoutpagepath + "?returnurl=" + $.urlParam('returnurl') + '&inputdata=' + $.urlParam('inputdata');
@@ -750,14 +519,14 @@ $("#dynamicPoputCheckout").click(function (e) {
     }
 });
 $("#btnECancel").click(function (e) {
-    $("#cartAreadyRegisterDiv").hide(); 
+    $("#cartAreadyRegisterDiv").hide();
     e.preventDefault();
     $('#shoppingCartLoader').hide();
 });
 $("#btnEContinue").click(function (e) {
     $("#cartAreadyRegisterDiv").hide();
     e.preventDefault();
-    addIntoShoppingCart(productDetailsInput, true);    
+    addIntoShoppingCart(productDetailsInput, true);
 });
 
 $("#dynamicPopupContinueShoppingCart").click(function (e) {
@@ -799,9 +568,9 @@ $("#membershipjoinLoginId").click(function () {
 
 $("#btnEContinueSubscribe").click(function (e) {
     $("#cartSelectSubscribeForDiv").hide();
-    e.preventDefault();    
+    e.preventDefault();
     var radioValue = $("input[name='cartMembershipType']:checked").val();
-    addIntoShoppingCart(radioValue, false, true);    
+    addIntoShoppingCart(radioValue, false, true);
 });
 $("#btnSubscribeUpgrade").click(function (e) {
     e.preventDefault();
@@ -812,7 +581,7 @@ function getParameterByNameQ(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results.input.replace("?redirecturl=",""));
+    return results === null ? "" : decodeURIComponent(results.input.replace("?redirecturl=", ""));
 }
 function RemoveShoppingCartItems(skuId) {
     var childElementId = "item_" + skuId;
@@ -833,7 +602,7 @@ function RemoveShoppingCartItems(skuId) {
                 var disableCheckoutButton = false;
                 if (result !== null && result.ShoppingCartCategoryInfo !== null) {
                     if (result.ShoppingCartCategoryInfo.length > 0) {
-                        
+
                         var addtoCartCategoryText = "What is in the cart: ";
                         for (var i = 0; i < result.ShoppingCartCategoryInfo.length; i++) {
                             addtoCartCategoryText += result.ShoppingCartCategoryInfo[i].ShoppingCartCategoryCount;
@@ -846,7 +615,7 @@ function RemoveShoppingCartItems(skuId) {
                         }
 
                         if (result.CartItems.length > 0) {
-                            
+
                             $("#ShoppingCartCountDesk").text(result.CartItems.length);
                             for (var j = 0; j < result.CartItems.length; j++) {
                                 var resultItem = result.CartItems[j];
@@ -862,12 +631,12 @@ function RemoveShoppingCartItems(skuId) {
                                 strHTML += '<div class="item-name"> <p> ' + resultItem.SkuName;
                                 strHTML += '</p> <small>' + resultItem.Description + '</small>';
                                 if (result.CartItems[j].MembershipErrorWarning !== "") {
-                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';              
-                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > '+ result.CartItems[j].MembershipErrorWarning + '</label></p></div>';
+                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';
+                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > ' + result.CartItems[j].MembershipErrorWarning + '</label></p></div>';
                                 }
                                 else if (result.CartItems[j].EventErrorWarning !== "") {
-                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';               
-                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > '+ result.CartItems[j].EventErrorWarning;
+                                    strHTML += '<p class="shoppingCart-popup-membership-error-text">';
+                                    strHTML += '<label class="shoppingcart-popup-membership-error-outline-label"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i > ' + result.CartItems[j].EventErrorWarning;
                                     strHTML += '<a href="/services/upgrade">Click here</a> to upgrade</label></p></div>';
                                 }
                                 else if (result.CartItems[j].ProductErrorWarning !== "") {
@@ -878,22 +647,22 @@ function RemoveShoppingCartItems(skuId) {
                                 else { strHTML += '</div>'; }
                                 strHTML += '<div class="item-rate"><p>' + result.CurrentCurrency + '' + resultItem.ProductUnitPrice + '</p></div>';
                                 childDiv.innerHTML = strHTML;
-                                parentNode.appendChild(childDiv);   
+                                parentNode.appendChild(childDiv);
                                 if (result.CartItems[j].MembershipErrorWarning !== "" || result.CartItems[j].EventErrorWarning !== "" || result.CartItems[j].ProductErrorWarning !== "") {
                                     disableCheckoutButton = true;
                                 }
-                            }                            
+                            }
                         }
                         //if (childNode !== null && childNode !== typeof (undefined)) {
                         //    parentNode.removeChild(childNode);
                         //}                        
                         checkoutpagepath = result.CheckoutPagePath;
-                        
+
                     }
                     if (parentNode.childNodes.length === 0) {
                         parentNode.innerHTML = "<p>Shopping cart is empty</p>";
                         $("#addtocartgroupinfo").text("What is in the cart: 0");
-                        $("#ShoppingCartCountDesk").text("0");                
+                        $("#ShoppingCartCountDesk").text("0");
                     }
                 }
                 if (disableCheckoutButton) {
@@ -913,7 +682,7 @@ function RemoveShoppingCartItems(skuId) {
         complete: function () {
             $('#shoppingCartLoader').hide();
         }
-    });    
+    });
 }
 
 
@@ -934,7 +703,7 @@ function showProductCategory() {
                 var shoppingCartProductCategoryDiv = document.getElementById("productCategoryPopupContent");
                 var strHtml = '<ul class="list-inline">';
                 for (var i = 0; i < result.length; i++) {
-                    strHtml += '<li><a href="' + result[i].Url + '">' + result[i].PageName+'</a></li>';
+                    strHtml += '<li><a href="' + result[i].Url + '">' + result[i].PageName + '</a></li>';
                 }
                 strHtml += '</ul>';
                 shoppingCartProductCategoryDiv.innerHTML = strHtml;
@@ -950,7 +719,7 @@ function showProductCategory() {
 }
 // Shopping cart modal popup close event
 //$('#myShoppingModal').on('hidden.bs.modal', function (e) {
-    
+
 //});
 var isMobile = {
     Android: function () {
@@ -967,7 +736,7 @@ var isMobile = {
     },
     Windows: function () {
         return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-    },    
+    },
     any: function () {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
@@ -984,10 +753,10 @@ function checkWidthHeight() {
         return true;
     }
 }
-function enableForceEvent(){
+function enableForceEvent() {
     forceAddEvent = true;
 }
-function disableForceEvent(){
+function disableForceEvent() {
     forceAddEvent = false;
 }
 $.urlParam = function (name) {

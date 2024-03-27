@@ -10262,7 +10262,7 @@ input[type=checkbox] {
 .write-us-container h4,
 .write-us-container h5 {
     font-weight: 800;
-    color: #9c0a7d;
+    color: #000;
     text-align: center
 }
 
@@ -13804,7 +13804,7 @@ button[class^="o-"] {
 }
 
 .top-wrapper .bg-img .content-inner .bg-purple {
-    background-color: #4da86f;
+    background-color: rgba(77, 168, 111, .6);
     border: 1px solid transparent;
     border-radius: 0
 }

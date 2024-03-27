@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('homepage');
 // });
 
-Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('dashboard');
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+Route::get('dashboard', [App\Http\Controllers\AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
+
+Route::delete('posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
+Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
+Route::post('/admin/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
+
 
 // Route::get('home', function () {
 //     return view('homepage');
@@ -64,9 +72,9 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', function () {
-        return view('auth/dashboard');
-    })->name('dashboard');
+    // Route::get('dashboard', function () {
+    //     return view('auth/dashboard');
+    // })->name('dashboard');
 
     Route::controller(PostController::class)->prefix('post')->group(function (){
         Route::get('', 'create')->name('create');
@@ -75,5 +83,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::delete('posts/{id}', 'PostController@destroy')->name('posts.destroy');
+
+
 
