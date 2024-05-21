@@ -10,11 +10,9 @@
                 <h1 class="mt-4">Dashboard</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">This page allows you to upload your contents and Image Gallery</li>
-                </ol>
-                <div class="row">
-                   
-                </div>
                 
+                </ol>
+               
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -60,6 +58,41 @@
                         </table>
                     </div>
                 </div>
+                
+            </div>
+            <div class="container-fluid px-4">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Filename</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($images as $index => $item)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $item->filename }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->description }}</td>
+                                <td>
+                                    <img src="{{ asset($item->filename) }}" width='50' height='50' class="img img-responsive" />
+                                </td>
+                                <td>
+                                    <form action="{{ route('images.destroy', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 
             </div>
         </main>

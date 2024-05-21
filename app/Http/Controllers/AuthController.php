@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Import Auth Facade
 use Illuminate\Support\Facades\Validator; // Correct Validator Namespace
@@ -10,10 +11,12 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
     public function dashboard()
+
     {
+        $images = Image::all();
         $posts = Post::orderBy('created_at', 'asc')->get();
         
-        return view('auth.dashboard', compact('posts'));
+        return view('auth.dashboard', compact('posts', 'images'));
     }
 
     public function login()

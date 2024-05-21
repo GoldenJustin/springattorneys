@@ -12,74 +12,23 @@
 
 
             <div class="row">
-                <div class="col-sm-6 col-md-4 mb-3">
-                    <div class="image-container">
-                        <img src="{{ asset('assets/image/janeth.png') }}" alt="" class="fluid img-thumbnail">
-                        <div class="image-overlay">
-                            <h5>Title 1</h5>
-                            <p>Description 1</p>
+
+              @foreach ($images as $image)
+                    <div class="col-sm-6 col-md-4 mb-3">
+                        <div class="image-container">
+                            <img src="{{ asset($image->filename) }}" alt="" class="img-fluid img-thumbnail">
+                            <div class="image-overlay">
+                                <h5>{{ $image->title }}</h5>
+                                <p>{{ $image->description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="image-container">
-                  <img src="{{ asset('images/' . $imageName) }}" alt="" class="fluid img-thumbnail">
-                  <div class="image-overlay">
-                      <h5>Title 1</h5>
-                      <p>Description 1</p>
-                  </div>
-              </div>
-              
-                <div class="col-sm-6 col-md-4 mb-3">
-                    <div class="image-container">
-                        <img src="{{ asset('assets/image/DSC_4110.jpg') }}" alt="" class="fluid img-thumbnail">
-                        <div class="image-overlay">
-                            <h5>Title 2</h5>
-                            <p>Description 2</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 mb-3">
-                    <div class="image-container">
-                        <img src="{{ asset('assets/image/DSC_4136.jpg') }}" alt="" class="fluid img-thumbnail">
-                        <div class="image-overlay">
-                            <h5>Title 3</h5>
-                            <p>Description 3</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more image containers as needed -->
+                @endforeach
+            
             </div>
 
 
-            {{-- <div class="row">
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src="{{ asset ('assets/image/janeth.png') }}" alt="" class="fluid img-thumbnail">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src=" {{ asset ('assets/image/DSC_4110.jpg') }}" alt="" class="fluid img-thumbnail">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src="{{ asset ('assets/image/DSC_4136.jpg') }} " alt="" class="fluid img-thumbnail">      
-          </div>
-           <div class="col-sm-6 col-md-4 mb-3">
-            <img src=" {{ asset ('assets/image/JJE_potrait_576x720.jpg') }}" alt="" class="fluid img-thumbnail" style="width: 45%">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src=" {{ asset ('assets/image/janeth.png') }}" alt="" class="fluid img-thumbnail">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src="{{ asset ('assets/image/janeth.png') }} " alt="" class="fluid img-thumbnail">      
-          </div>
-           <div class="col-sm-6 col-md-4 mb-3">
-            <img src="{{ asset ('assets/image/janeth.png') }} " alt="" class="fluid img-thumbnail">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src=" {{ asset ('assets/image/janeth.png') }}" alt="" class="fluid img-thumbnail">      
-          </div>
-          <div class="col-sm-6 col-md-4 mb-3">
-            <img src=" {{ asset ('assets/image/janeth.png') }}" alt="" class="fluid img-thumbnail">      
-          </div>
-        </div> --}}
+           
         </div>
     </div>
 

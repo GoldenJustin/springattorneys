@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/upload', [ImageController::class, 'upload'])->name('store.image');
     Route::get('/upload/image', [ImageController::class, 'create'])->name('create.image');
-    Route::get('indeximage', [ImageController::class, 'index'])->name('index.image');
+    // Route::get('indeximage', [ImageController::class, 'index'])->name('index.image');
 
 
     
@@ -83,5 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
-    Route::post('/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
+    Route::delete('/images/{id}', [ImageController::class, 'destroy'])->name('images.destroy');
+
+    // Route::post('/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
 });
