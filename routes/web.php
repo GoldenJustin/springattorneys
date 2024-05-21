@@ -20,19 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('homepage');
 // });
 
-Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
-Route::get('dashboard', [App\Http\Controllers\AuthController::class, 'dashboard'])->name('dashboard');
-Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
-
-Route::delete('posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
-Route::put('/posts/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
-Route::post('/admin/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
 
 
-// Route::get('home', function () {
-//     return view('homepage');
-// });
+
 
 
 Route::get('about', function () {
@@ -59,30 +49,39 @@ Route::get('acceptable-use', function () {
     return view('acceptable-use');
 });
 
+Route::get('gallery', [ImageController::class, 'gallery'])->name('gallery.image');
 
-Route::get('gallery', function () {
-    return view('gallery');
-});
+
+
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('auth/login', 'login')->name('login');
     Route::post('auth/login', 'loginAction')->name('login.action');
-    // Route::get('auth/dashboard', 'dashboard')->name('dashboard');
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
 
 Route::middleware('auth')->group(function () {
-    // Route::get('dashboard', function () {
-    //     return view('auth/dashboard');
-    // })->name('dashboard');
 
-    Route::controller(PostController::class)->prefix('post')->group(function (){
+    Route::controller(PostController::class)->prefix('post')->group(function () {
         Route::get('', 'create')->name('create');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
     });
+
+    Route::post('/upload', [ImageController::class, 'upload'])->name('store.image');
+    Route::get('/upload/image', [ImageController::class, 'create'])->name('create.image');
+    Route::get('indeximage', [ImageController::class, 'index'])->name('index.image');
+
+
+    
+
+    Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+    Route::get('dashboard', [App\Http\Controllers\AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
+
+    Route::delete('posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
+    Route::post('/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
 });
-
-
-
-

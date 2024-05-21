@@ -12,6 +12,7 @@ class AuthController extends Controller
     public function dashboard()
     {
         $posts = Post::orderBy('created_at', 'asc')->get();
+        
         return view('auth.dashboard', compact('posts'));
     }
 
