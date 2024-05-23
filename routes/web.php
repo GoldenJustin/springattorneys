@@ -16,15 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('homepage');
-// });
-
-
-
-
-
-
 Route::get('about', function () {
     return view('about');
 });
@@ -48,11 +39,11 @@ Route::get('privacy-policy', function () {
 Route::get('acceptable-use', function () {
     return view('acceptable-use');
 });
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
+
 
 Route::get('gallery', [ImageController::class, 'gallery'])->name('gallery.image');
-
-
-
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -73,12 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/upload/image', [ImageController::class, 'create'])->name('create.image');
     // Route::get('indeximage', [ImageController::class, 'index'])->name('index.image');
 
-
-    
-
-    Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
     Route::get('dashboard', [App\Http\Controllers\AuthController::class, 'dashboard'])->name('dashboard');
-    Route::get('home', [App\Http\Controllers\PostController::class, 'index'])->name('homepage');
 
     Route::delete('posts/{id}', [App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/posts/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');

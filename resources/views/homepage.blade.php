@@ -6,7 +6,7 @@
 
 
 <div id="p_lt_ctl01_sys_pnlUpdate">
-    <section class="block top-wrapper clearfix">
+    {{-- <section class="block top-wrapper clearfix">
         @foreach ($posts as $index => $post)
         <div class="col-md-6 no-pad">
             <div class="bg-img"><img class="img-responsive" src="{{ asset('assets/image/' . $imageFiles[$index % count($imageFiles)]) }}" alt="" />
@@ -21,7 +21,44 @@
                         <div class="detail">
                             <p>{{ $post->detail }}</p>
                         </div>
-                        <div class="button"><a _blank="" class="btn btn-default">{{ $post->button }}</a> </b>
+                        <div class="button"><a _blank="" class="btn btn-default">{{ $post->button }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </section> --}}
+    <section class="block top-wrapper clearfix">
+        @foreach ($posts as $index => $post)
+        <div class="col-md-6 no-pad">
+            <div class="bg-img"><img class="img-responsive" src="{{ asset('assets/image/' . $imageFiles[$index % count($imageFiles)]) }}" alt="" />
+    
+                <div class="content-inner {{ $index % 2 == 0 ? 'right' : 'left' }}">
+                    <div class="board short {{ $index % 2 == 0 ? 'bg-blue' : 'bg-purple' }}">
+                        <div class="title">
+                            <h3>
+                                <p>{{ $post->title }}</p>
+                            </h3>
+                        </div>
+                        <div class="detail">
+                            <p>{{ $post->detail }}</p>
+                        </div>
+                        <div class="button">
+                            @php
+                                $words = explode(' ', $post->button);
+                                $formattedText = '';
+    
+                                foreach ($words as $i => $word) {
+                                    $formattedText .= $word;
+                                    if (($i + 1) % 2 == 0) {
+                                        $formattedText .= '<br>';
+                                    } else {
+                                        $formattedText .= ' ';
+                                    }
+                                }
+                            @endphp
+                            <a class="btn btn-default" target="_blank">{!! $formattedText !!}</a>
                         </div>
                     </div>
                 </div>
@@ -29,6 +66,7 @@
         </div>
         @endforeach
     </section>
+    
 
     <div class="container">
         <div class="row">
