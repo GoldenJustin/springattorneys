@@ -1,8 +1,7 @@
 @extends('welcome')
 
 @section('content')
-    {{-- 
-@include('layouts.review') --}}
+    
 
 
 <div id="p_lt_ctl01_sys_pnlUpdate">
