@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     {
         $images = Image::all();
-        $posts = Post::orderBy('created_at', 'asc')->get();
+        $posts = post::orderBy('created_at', 'asc')->get();
         
         return view('auth.dashboard', compact('posts', 'images'));
     }
